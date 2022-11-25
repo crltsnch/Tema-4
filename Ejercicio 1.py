@@ -31,3 +31,8 @@ freq=[0.2, 0.17, 0.13, 0.21, 0.05, 0.09, 0.15]
 #lista que contiene los nodos no utilizados
 nodes = []
 
+#convertir los caracteres y las frecuencias en un árbol de Huffman
+for x in range(len(symbols)):
+    heapq.heappush(nodes, node(freq[x], symbols[x]))
+
+while len(nodes)
