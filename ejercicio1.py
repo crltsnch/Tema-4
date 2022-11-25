@@ -1,4 +1,5 @@
 import heapq
+
 from turtle import right #estructura de montículos
 class node:
     def __init__(self, freq, symbol, left=None, right=None):
@@ -52,3 +53,22 @@ while len(nodes) > 1:
     heapq.heappush(nodes, nuevoNode)
 
 printNodes(nodes[0])
+
+
+def HuffmanDecoding(encodedData, huffmanTree):
+    treeHead=huffmanTree
+    decodedOutput=[]
+    for x in encodedData:
+        if x=='1':
+            huffmanTree = huffmanTree.right
+        elif x=='0':
+            huffmanTree=huffmanTree.left
+        try:
+            if huffmanTree.left.symbol == None and huffmanTree.right.symbol == None:
+                pass
+        except AttributeError:
+            decodedOutput.append(huffmanTree.symbol)
+            huffmanTree=treeHead
+    
+    string =''.join([str(item) for item in decodedOutput])
+    return string
