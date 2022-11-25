@@ -1,4 +1,5 @@
-import heapq #estructura de montículos
+import heapq
+from turtle import right #estructura de montículos
 class node:
     def __init__(self, freq, symbol, left=None, right=None):
         self.freq=freq    #frecuencia de cada simbolo
@@ -35,4 +36,8 @@ nodes = []
 for x in range(len(symbols)):
     heapq.heappush(nodes, node(freq[x], symbols[x]))
 
-while len(nodes)
+while len(nodes) > 1:
+    #ordenar los nodos de forma ascendente segun sus frecuencias
+    left = heapq.heappop(nodes)
+    right = heapq.heappop(nodes)
+    
