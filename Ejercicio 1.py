@@ -26,15 +26,15 @@ def printNodes(node, val=''):
         print(f"{node.symbol} -> {nuevoVal}")
 
 #datos de los caracteres y sus frecuencias
-symbols = ['A', 'F', 1, 2, 0, 'M', 'T']
+carac = ['A', 'F', 1, 2, 0, 'M', 'T']
 freq = [0.2, 0.17, 0.13, 0.21, 0.05, 0.09, 0.15]
 
 #lista que contiene los nodos no utilizados
 nodes = []
 
 #convertir los caracteres y las frecuencias en un árbol de Huffman
-for x in range(len(symbols)):
-    heapq.heappush(nodes, node(freq[x], symbols[x]))
+for x in range(len(carac)):
+    heapq.heappush(nodes, node(freq[x], carac[x]))
 
 while len(nodes) > 1:
     #ordenar los nodos de forma ascendente segun sus frecuencias
@@ -46,7 +46,7 @@ while len(nodes) > 1:
     right.huff=1
 
     #sumar los 2 nodos mas pequeños para crear un nodo nuevo como su padre
-    nuevoNode = node(left.freq + right.freq, left.symbol + right.symbol, left, right)
+    nuevoNode = node(left.freq+right.freq, str(left.symbol)+str(right.symbol), left, right)
 
     #para que el orden se mantenga
     heapq.heappush(nodes, nuevoNode)
