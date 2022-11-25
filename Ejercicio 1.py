@@ -13,7 +13,7 @@ class node:
 
 #funcion que imprima árbol de Huffman
 def printNodes(node, val=''):
-    nuevoVal= val + str(node.huff)   #huffman para el nodo actual
+    nuevoVal = val + str(node.huff)   #huffman para el nodo actual
 
     #si el nodo no es un nodo extremo entonces recorrelo
     if (node.left):
@@ -26,8 +26,8 @@ def printNodes(node, val=''):
         print(f"{node.symbol} -> {nuevoVal}")
 
 #datos de los caracteres y sus frecuencias
-symbols=['A', 'F', 1, 2, 0, 'M', 'T']
-freq=[0.2, 0.17, 0.13, 0.21, 0.05, 0.09, 0.15]
+symbols = ['A', 'F', 1, 2, 0, 'M', 'T']
+freq = [0.2, 0.17, 0.13, 0.21, 0.05, 0.09, 0.15]
 
 #lista que contiene los nodos no utilizados
 nodes = []
@@ -40,4 +40,15 @@ while len(nodes) > 1:
     #ordenar los nodos de forma ascendente segun sus frecuencias
     left = heapq.heappop(nodes)
     right = heapq.heappop(nodes)
-    
+
+    #asignamos los valores 0 y 1 de la direccion
+    left.huff=0
+    right.huff=1
+
+    #sumar los 2 nodos mas pequeños para crear un nodo nuevo como su padre
+    nuevoNode = node(left.freq + right.freq, left.symbol + right.symbol, left, right)
+
+    #para que el orden se mantenga
+    heapq.heappush(nodes, nuevoNode)
+
+printNodes(nodes[0])
