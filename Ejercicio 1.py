@@ -10,10 +10,24 @@ class node:
     def __lt__(self, nxt):
         return self.freq < nxt.freq
 
-#funcion que imprima árbol de huffman
+#funcion que imprima árbol de Huffman
 def printNodes(node, val=''):
-    nuevoValor= val + str(node.huff)   #huffman para el nodo actual
+    nuevoVal= val + str(node.huff)   #huffman para el nodo actual
 
     #si el nodo no es un nodo extremo entonces recorrelo
-    if (node.left)
+    if (node.left):
+        printNodes(node.left, nuevoVal)
+    if (node.right):
+        printNodes(node.right, nuevoVal)
+
+    #si el nodo es extremo imprimelo
+    if (not node.left and not node.right):
+        print(f"{node.symbol} -> {nuevoVal}")
+
+#datos de los caracteres y sus frecuencias
+symbols=['A', 'F', 1, 2, 0, 'M', 'T']
+freq=[0.2, 0.17, 0.13, 0.21, 0.05, 0.09, 0.15]
+
+#lista que contiene los nodos no utilizados
+nodes = []
 
